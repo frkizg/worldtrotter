@@ -102,6 +102,34 @@
             </objects>
             <point key="canvasLocation" x="1174" y="739"/>
         </scene>
+        <!--Web-->
+        <scene sceneID="oAb-jD-Opl">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIy-Qc-IU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="riU-3c-ByC" customClass="WebViewController" customModule="Worldtrotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tYh-0a-RFM"/>
+                        <viewControllerLayoutGuide type="bottom" id="3Oz-JV-yNL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8RF-4N-qx1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5tZ-RP-P2r">
+                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Web" id="CM4-gF-7Pw"/>
+                    <connections>
+                        <outlet property="webView" destination="5tZ-RP-P2r" id="MHI-yZ-Ccn"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="363" y="1254"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="y12-3Z-amK">
             <objects>
@@ -114,6 +142,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Mw8-C2-nfb"/>
                         <segue destination="ACd-4j-drU" kind="relationship" relationship="viewControllers" id="MFZ-0j-iIZ"/>
+                        <segue destination="riU-3c-ByC" kind="relationship" relationship="viewControllers" id="ufK-M0-NuG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6y-UZ-TdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
