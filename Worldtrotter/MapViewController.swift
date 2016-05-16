@@ -40,6 +40,7 @@ class MapViewController: UIViewController{
         leadingConstraint.active = true
         trailingConstraint.active = true
         
+        
     }
     
     
