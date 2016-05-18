@@ -9,14 +9,19 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController{
+class MapViewController: UIViewController, MKMapViewDelegate  {
     
     var mapView: MKMapView!
+    var locationManager: CLLocationManager!
     
     override func loadView() {
        
         //Create MapView
         mapView = MKMapView()
+        mapView.delegate = self
+    
+        
+        locationManager = CLLocationManager()
         
         
         //Set it as *the* view for this ViewController
@@ -44,7 +49,34 @@ class MapViewController: UIViewController{
         leadingConstraint.active = true
         trailingConstraint.active = true
         
+        let showLocationButton = UIButton(type: .System)
+        showLocationButton.setTitle("My location", forState: .Normal)
+        showLocationButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(showLocationButton)
+        showLocationButton.addTarget(self, action: #selector(MapViewController.showLocationButton(_:)), forControlEvents: .TouchUpInside)
         
+        let topButonConstraint = showLocationButton.topAnchor.constraintEqualToAnchor(segmentedControl.bottomAnchor, constant: 8)
+        let leadingLocationButtonConstraint = showLocationButton.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
+        let trailingLocationButtonAnchor = showLocationButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        
+        topButonConstraint.active = true
+        leadingLocationButtonConstraint.active = true
+        trailingLocationButtonAnchor.active = true
+        
+        
+        
+        
+    }
+    
+    func showLocationButton (sender: UIButton!){
+        
+        locationManager.requestWhenInUseAuthorization()
+        mapView.showsUserLocation = true
+    }
+    
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        let zoomedInCurrentLocation = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 100, 100)
+        mapView.setRegion(zoomedInCurrentLocation, animated: true)
     }
     
     func mapTypeChanged(segControl: UISegmentedControl) {
